@@ -1,6 +1,8 @@
 'use client'
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
+import korLogo from '@/public/kor-crossfit_white.png'
 
 const TwentyFiveOne = () => {
   const [reps, setReps] = useState(0)
@@ -11,23 +13,26 @@ const TwentyFiveOne = () => {
     let burpees = 3;
     let cleanToOverheads = 3;
     let lunges = 2;
+    let round = 1;
     
     while (totalReps > 0) {
-      if (totalReps <= burpees) return <p className='movement'>Burpees over dumbbell: {burpees} reps</p>;
+      let roundReps = burpees + cleanToOverheads + lunges;
+      
+      if (totalReps <= burpees) return `Burpees over DB: ${totalReps} / ${burpees} reps`;
       totalReps -= burpees;
       
-      if (totalReps <= cleanToOverheads) return <p className='movement'>Dumbbell hang clean-to-ovh: {cleanToOverheads} reps</p>;
+      if (totalReps <= cleanToOverheads) return `DB hang clean-to-ovh: ${totalReps} / ${cleanToOverheads} reps`;
       totalReps -= cleanToOverheads;
       
-      if (totalReps <= lunges) return <p className='movement'>Walking lunge: {lunges} reps</p>;
+      if (totalReps <= lunges) return `Walking lunge: ${totalReps} / ${lunges} reps`;
       totalReps -= lunges;
       
       // Increase reps for next round
+      round++;
       burpees += 3;
       cleanToOverheads += 3;
     }
   }
-  
   
   function getCurrentRound(totalReps) {
     let burpees = 3;
@@ -59,7 +64,8 @@ const TwentyFiveOne = () => {
   return (
     <main className=" bg-amber-600 h-screen text-white relative flex flex-col justify-between">
       <Link href="/" className='pl-4 pt-4 text-white'>&lt; Back</Link>
-      <div>
+      <div className=''>
+        <Image alt='kor logo' src={korLogo} width={200} height={200} className='mx-auto w-12 -mt-4 mb-4' />
         <h1 className="font-bold text-center w-full text-3xl">
           OPEN 25.1
         </h1>
@@ -74,20 +80,24 @@ const TwentyFiveOne = () => {
         <br></br>
         *After completing each round, add 3 reps to the burpees and hang clean-to-overheads.
         <br></br>
-        ♀ 35-lb (15-kg) dumbbell
         <br></br>
-        ♂ 50-lb (22.5-kg) dumbbell
+        <span className='font-bold text-sm'>♀ 35-lb (15kg) dumbbell</span>
+        <br></br>
+        <span className='font-bold text-sm'>♀ 50-lb (22.5kg) dumbbell</span>
         </p>
-      </div>
-      <div className='w-full flex justify-center mt-4'>
-        <button onClick={()=>setReps(0)} className='border-[1px] rounded-lg px-4 py-2'>RESET</button>
       </div>
       <div className='w-full p-8 flex flex-col gap-8'>
         <div className=''>
-          <h3 className='text-2xl font-bold text-center'>ROUND {reps > 0 ? getCurrentRound(reps)-1 : 0}</h3>
-          <h3 className='text-2xl font-bold text-center'>{reps} REPS</h3>
+          <h3 className='text-2xl font-bold text-center'>CURRENT ROUND: {getCurrentRound(reps) ? getCurrentRound(reps) : 0}</h3>
+          <h3 className='text-2xl font-bold text-center'>{reps} {reps>1 ? 'REPS' : 'REP'}</h3>
+          <p className='text-center font-bold'>
           {getCurrentMovement(reps)}
+
+          </p>
         </div>
+      <div className='w-full flex justify-center mt-4'>
+        <button onClick={()=>setReps(0)} className='border-[1px] rounded-lg px-4 py-2'>RESET</button>
+      </div>
         <div className='flex flex-row justify-center gap-4 w-full'>
           <button className='border-2 text-2xl text-white font-bold py-2 px-4 rounded w-full' onClick={() => handleRepsChange('decrement')}>- 1</button>  
           <button className='border-2 text-2xl text-white font-bold py-2 px-4 rounded w-full' onClick={() => handleRepsChange('increment')}>+ 1</button>

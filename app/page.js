@@ -1,9 +1,11 @@
 import Image from "next/image";
 import Link from 'next/link';
+import korLogo from '@/public/kor-crossfit_white.png'
 
 export default function Home() {
   return (
       <main className="p-8 flex flex-col h-screen items-center justify-center bg-amber-600">
+        <Image alt='kor logo' src={korLogo} width={200} height={200} className='mx-auto w-42 -mt-4 mb-4' />
         <h1 className="font-bold title text-center text-white">
           OPEN 2025
         </h1>
