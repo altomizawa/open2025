@@ -8,13 +8,13 @@
 }
 
 :root {
-  --background: #FFB300;
+  --background: #DD6B20;
   --foreground: #171717;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #FFB300;
+    --background: #DD6B20;
     --foreground: #ededed;
   }
 }
