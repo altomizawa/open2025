@@ -47,46 +47,50 @@ const TwentyFiveOne = () => {
     }
   }
 
-  const handleRepsChange = (newReps) => {
-    setReps(newReps)
+  const handleRepsChange = (type) => {
+    if (reps === 0 && type === 'decrement') return;
+    if (type === 'increment') {
+      setReps(reps + 1)
+    } else if (type === 'decrement' && reps > 0) {
+      setReps(reps - 1)
+    }
   }
 
   return (
-    <main className="p-8 bg-amber-600 h-screen text-white">
-      <Link href="/" className='text-white'>&lt; Back</Link>
-      <h1 className="font-bold text-center w-full text-5xl mt-4">
-        OPEN 25.1
-      </h1>
-      <p className='text-center w-[90%] mx-auto mt-6'>
-      As many rounds and reps as possible in 15 minutes of:<br></br>
-      <br></br>
-      3 lateral burpees over the dumbbell
-      <br></br>
-      3 dumbbell hang clean-to-overheads
-      <br></br>
-      30-foot walking lunge (2 x 15 feet)
-      <br></br>
-      <br></br>
-      *After completing each round, add 3 reps to the burpees and hang clean-to-overheads.
-      <br></br>
-      <br></br>
-      ♀ 35-lb (15-kg) dumbbell
-      <br></br>
-      ♂ 50-lb (22.5-kg) dumbbell
-      </p>
+    <main className=" bg-amber-600 h-screen text-white relative flex flex-col justify-between">
+      <Link href="/" className='pl-4 pt-4 text-white'>&lt; Back</Link>
+      <div>
+        <h1 className="font-bold text-center w-full text-3xl">
+          OPEN 25.1
+        </h1>
+        <p className='text-center w-[90%] mx-auto mt-6'>
+        As many rounds and reps as possible in 15 minutes of:
+        <br></br>
+        3 lateral burpees over the dumbbell
+        <br></br>
+        3 dumbbell hang clean-to-overheads
+        <br></br>
+        30-foot walking lunge (2 x 15 feet)
+        <br></br>
+        *After completing each round, add 3 reps to the burpees and hang clean-to-overheads.
+        <br></br>
+        ♀ 35-lb (15-kg) dumbbell
+        <br></br>
+        ♂ 50-lb (22.5-kg) dumbbell
+        </p>
+      </div>
       <div className='w-full flex justify-center mt-4'>
         <button onClick={()=>setReps(0)} className='border-[1px] rounded-lg px-4 py-2'>RESET</button>
-
       </div>
-      <div className='fixed bottom-0 left-0 w-full p-8 flex flex-col gap-8'>
+      <div className='w-full p-8 flex flex-col gap-8'>
         <div className=''>
-          <h3 className='text-4xl font-bold text-center'>ROUND {getCurrentRound(reps)}</h3>
-          <h3 className='text-4xl font-bold text-center'>{reps} REPS</h3>
+          <h3 className='text-2xl font-bold text-center'>ROUND {reps > 0 ? getCurrentRound(reps)-1 : 0}</h3>
+          <h3 className='text-2xl font-bold text-center'>{reps} REPS</h3>
           {getCurrentMovement(reps)}
         </div>
         <div className='flex flex-row justify-center gap-4 w-full'>
-          <button className='border-2 text-2xl text-white font-bold py-2 px-4 rounded w-full' onClick={() => setReps(reps - 1)}>- 1</button>  
-          <button className='border-2 text-2xl text-white font-bold py-2 px-4 rounded w-full' onClick={() => setReps(reps + 1)}>+ 1</button>
+          <button className='border-2 text-2xl text-white font-bold py-2 px-4 rounded w-full' onClick={() => handleRepsChange('decrement')}>- 1</button>  
+          <button className='border-2 text-2xl text-white font-bold py-2 px-4 rounded w-full' onClick={() => handleRepsChange('increment')}>+ 1</button>
         </div>
       </div>
     </main>
