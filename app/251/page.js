@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react'
+import Link from 'next/link'
 
 const TwentyFiveOne = () => {
   const [reps, setReps] = useState(0)
@@ -10,26 +11,23 @@ const TwentyFiveOne = () => {
     let burpees = 3;
     let cleanToOverheads = 3;
     let lunges = 2;
-    let round = 1;
     
     while (totalReps > 0) {
-      let roundReps = burpees + cleanToOverheads + lunges;
-      
-      if (totalReps <= burpees) return `Round ${round}: Burpees over dumbbell: ${burpees} reps`;
+      if (totalReps <= burpees) return <p>Burpees over dumbbell: {burpees} reps</p>;
       totalReps -= burpees;
       
-      if (totalReps <= cleanToOverheads) return `Round ${round}: Dumbbell hang clean-to-overhead: ${cleanToOverheads} reps`;
+      if (totalReps <= cleanToOverheads) return <p>Dumbbell hang clean-to-overhead: {cleanToOverheads} reps</p>;
       totalReps -= cleanToOverheads;
       
-      if (totalReps <= lunges) return `Round ${round}: Walking lunge: ${lunges} reps`;
+      if (totalReps <= lunges) return <p>Walking lunge: {lunges} reps</p>;
       totalReps -= lunges;
       
       // Increase reps for next round
-      round++;
       burpees += 3;
       cleanToOverheads += 3;
     }
   }
+  
   
   function getCurrentRound(totalReps) {
     let burpees = 3;
@@ -54,11 +52,12 @@ const TwentyFiveOne = () => {
   }
 
   return (
-    <main className="p-8">
-      <h1 className="font-bold title text-center">
+    <main className="p-8 bg-amber-600 h-screen text-white">
+      <Link href="/" className='text-white'>&lt; Back</Link>
+      <h1 className="font-bold text-center w-full text-5xl mt-12">
         OPEN 25.1
       </h1>
-      <h2>
+      <p className='text-center w-[90%] mx-auto mt-12'>
       As many rounds and reps as possible in 15 minutes of:<br></br>
       <br></br>
       3 lateral burpees over the dumbbell
@@ -74,9 +73,9 @@ const TwentyFiveOne = () => {
       ♀ 35-lb (15-kg) dumbbell
       <br></br>
       ♂ 50-lb (22.5-kg) dumbbell
-      </h2>
-      <p>{getCurrentMovement(reps)}</p>
+      </p>
       <div className='fixed bottom-0 left-0 w-full p-8 flex flex-col justify-center items-center gap-24'>
+        {getCurrentMovement(reps)}
         <div>
           <h3 className='text-4xl font-bold text-center'>ROUND {getCurrentRound(reps)}</h3>
           <h3 className='text-4xl font-bold text-center'>{reps} REPS</h3>
