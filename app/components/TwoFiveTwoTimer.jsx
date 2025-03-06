@@ -37,15 +37,24 @@ const TwoFiveTwoTimer = ({ reps, setReps, movement, setMovement, isRx }) => {
       <div>
         <h3 className='text-2xl font-bold text-center'>Current Movement:</h3>
         <p className='text-center text-xl'>
-          {reps <= 21 && '21 pull-ups'}
-          {reps > 21 && reps <= 63 && '42 double-unders'}
-          {reps > 63 && reps <= 84 && '21 thrusters (weight 1)'}
-          {reps > 84 && reps <= 102 && '18 chest-to-bar pull-ups'}
-          {reps > 102 && reps <= 138 && '36 double-unders'}
-          {reps > 138 && reps <= 156 && '18 thrusters (weight 2)'}
-          {reps > 156 && reps <= 171 && '15 bar muscle-ups'}
-          {reps > 171 && reps <= 201 && '30 double-unders'}
-          {reps > 201 && reps <= 216 && '15 thrusters (weight 3)'}
+          {reps <= 21 && isRx && '21 pull-ups'}
+          {reps <= 21 && !isRx && '21 jumping pull-ups'}
+          {reps > 21 && reps <= 63 && isRx && '42 double-unders'}
+          {reps > 21 && reps <= 63 && !isRx && '42 single-unders'}
+          {reps > 63 && reps <= 84 && isRx && '21 thrusters (95/65)'}
+          {reps > 63 && reps <= 84 && !isRx && '21 thrusters (65/45)'}
+          {reps > 84 && reps <= 102 && isRx && '18 chest-to-bar pull-ups'}
+          {reps > 84 && reps <= 102 && !isRx && '18 pull-ups'}
+          {reps > 102 && reps <= 138 && isRx && '36 double-unders'}
+          {reps > 102 && reps <= 138 && !isRx && '36 single-unders'}
+          {reps > 138 && reps <= 156 && isRx && '18 thrusters (115/75)'}
+          {reps > 138 && reps <= 156 && !isRx && '18 thrusters (85/55)'}
+          {reps > 156 && reps <= 171 && isRx && '15 bar muscle-ups'}
+          {reps > 156 && reps <= 171 && !isRx && '15 C2B pullups'}
+          {reps > 171 && reps <= 201 && isRx && '30 double-unders'}
+          {reps > 171 && reps <= 201 && !isRx && '30 single-unders'}
+          {reps > 201 && reps <= 216 && isRx && '15 thrusters (135/85)'}
+          {reps > 201 && reps <= 216 && !isRx && '15 thrusters (105/65)'}
         </p>
       </div>
       <div>
