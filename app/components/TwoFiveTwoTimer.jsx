@@ -48,7 +48,7 @@ const TwoFiveTwoTimer = ({ reps, setReps, movement, setMovement, isRx }) => {
           {reps > 102 && reps <= 138 && isRx && '36 double-unders'}
           {reps > 102 && reps <= 138 && !isRx && '36 single-unders'}
           {reps > 138 && reps <= 156 && isRx && '18 thrusters (115/75)'}
-          {reps > 138 && reps <= 156 && !isRx && '18 thrusters (85/55)'}
+          {reps > 138 && reps <= 156 && !isRx && '18 thrusters (85/55)'}  
           {reps > 156 && reps <= 171 && isRx && '15 bar muscle-ups'}
           {reps > 156 && reps <= 171 && !isRx && '15 C2B pullups'}
           {reps > 171 && reps <= 201 && isRx && '30 double-unders'}
