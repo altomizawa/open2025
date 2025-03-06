@@ -8,7 +8,7 @@ import TwoFiveTwoDescription from '@/app/components/TwoFiveTwoDescription'
 import TwoFiveTwoTimer from '../components/TwoFiveTwoTimer'
 
 const TwentyFiveTwo = () => {
-  const [reps, setReps] = useState(20)
+  const [reps, setReps] = useState(80)
   const [movement, setMovement] = useState('')
   const [isRx, setIsRx] = useState(true)
   const [isCounterScreen, setIsCounterScreen] = useState(false)
