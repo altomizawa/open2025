@@ -67,7 +67,7 @@ const TwoFiveTwoDescription = ({ setIsRx, isRx, setIsCounterScreen}) => {
         </p>
         )
       }
-      <button onClick={()=>{setIsCounterScreen(true)}} className={`border-[1px] rounded-md w-24 py-2 cursor-pointer font-bold mx-auto mt-8`}>START</button>
+      <button onClick={()=>{setIsCounterScreen(true)}} className={`border-[1px] rounded-md w-24 py-2 cursor-pointer font-bold mx-auto mt-8`}>NEXT</button>
     </div>
   )
 }
