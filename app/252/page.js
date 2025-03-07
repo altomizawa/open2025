@@ -28,7 +28,7 @@ const TwentyFiveTwo = () => {
   }
 
   return (
-    <main className='p-8 flex flex-col h-screen text-white'>
+    <main className='p-8 flex flex-col h-screen text-white max-w-[640px] mx-auto'>
       <Link href="/" className='text-white'>&lt; Back</Link>
       {isCounterScreen && <Image alt='kor logo' src={korLogo} width={200} height={200} className='mx-auto w-12' />}
       {!isCounterScreen && <TwoFiveTwoDescription setIsCounterScreen={setIsCounterScreen} category={category} currentWod={currentWod} handleCategoryChange={handleCategoryChange}/>}

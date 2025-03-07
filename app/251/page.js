@@ -62,7 +62,7 @@ const TwentyFiveOne = () => {
   }
 
   return (
-    <main className="h-screen text-white relative flex flex-col justify-between">
+    <main className="h-screen text-white relative flex flex-col justify-between max-w-[780px] mx-auto">
       <Link href="/" className='pl-4 pt-4 text-white'>&lt; Back</Link>
       <div className=''>
         <Image alt='kor logo' src={korLogo} width={200} height={200} className='mx-auto w-12 -mt-4 mb-4' />
