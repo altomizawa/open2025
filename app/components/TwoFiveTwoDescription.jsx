@@ -1,72 +1,25 @@
-import React from 'react'
+import { useState } from 'react'
 
-const TwoFiveTwoDescription = ({ setIsRx, isRx, setIsCounterScreen}) => {
+
+const TwoFiveTwoDescription = ({ setIsCounterScreen, category, currentWod, handleCategoryChange }) => {
+  console.log(category)
+
   return (
     <div className='mt-4 w-full text-center flex flex-col items-center gap-4'>
       <h2 className='text-3xl font-bold'>25.2</h2>
-      <div className='space-x-4'>
-        <button onClick={()=>{setIsRx(false)}} className={`border-[1px] rounded-md w-24 py-2 cursor-pointer ${!isRx ? 'bg-white text-black border-none' : ''}`}>SCALED</button>
-        <button onClick={()=>{setIsRx(true)}} className={`border-[1px] rounded-md w-24 py-2 cursor-pointer ${isRx ? 'bg-white text-black border-none' : ''}`}>RX</button>
+      <div className='space-x-4 text-sm'>
+        <button onClick={()=>{handleCategoryChange('scaled')}} className={`border-[1px] rounded-md w-24 py-2 cursor-pointer ${category==='scaled' ? 'bg-white text-black border-none' : ''}`}>SCALED</button>
+        <button onClick={()=>{handleCategoryChange('rx')}} className={`border-[1px] rounded-md w-24 py-2 cursor-pointer ${category==='rx' ? 'bg-white text-black border-none' : ''}`}>RX</button>
+        <button onClick={()=>{handleCategoryChange('foundations')}} className={`border-[1px] rounded-md w-min-24 py-2 px-2 cursor-pointer ${category==='foundations' ? 'bg-white text-black border-none' : ''}`}>FOUNDATIONS</button>
       </div>
-      {
-        isRx ? (
-        <p>For time:
-          <br></br>
-          21 pull-ups
-          <br></br>
-          42 double-unders
-          <br></br>
-          21 thrusters (weight 1)
-          <br></br>
-          18 chest-to-bar pull-ups
-          <br></br>
-          36 double-unders
-          <br></br>
-          18 thrusters (weight 2)
-          <br></br>
-          15 bar muscle-ups
-          <br></br>
-          30 double-unders
-          <br></br>
-          15 thrusters (weight 3)
-          <br></br>
-          <br></br>
-          Time cap: 12 minutes
-          <br></br>
-          ♀ 65, 75, 85 lb
-          <br></br>
-          ♂ 95, 115, 135 lb
-        </p>
-        ) : (
-          <p>For time:
-          <br></br>
-          21 jumping pull-ups
-          <br></br>
-          42 single-unders
-          <br></br>
-          21 thrusters (weight 1)
-          <br></br>
-          18 pull-ups
-          <br></br>
-          36 single-unders
-          <br></br>
-          18 thrusters (weight 2)
-          <br></br>
-          15 C2B pull-ups
-          <br></br>
-          30 single-unders
-          <br></br>
-          15 thrusters (weight 3)
-          <br></br>
-          <br></br>
-          Time cap: 12 minutes
-          <br></br>
-          ♀ 45, 45, 65 lb
-          <br></br>
-          ♂ 65, 85, 105 lb
-        </p>
-        )
-      }
+      <div className='mt-4'>
+        <p>For Time:</p>
+        {currentWod.exercises.map((exercise, index) => (
+          <p key={index} className='font-medium text-md'> 
+          {exercise.reps} {exercise.name}
+          </p>
+        ))}
+      </div>
       <button onClick={()=>{setIsCounterScreen(true)}} className={`border-[1px] rounded-md w-24 py-2 cursor-pointer font-bold mx-auto mt-8`}>NEXT</button>
     </div>
   )

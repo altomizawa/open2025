@@ -1,8 +1,12 @@
 import { useEffect, useState } from 'react'
 
-const TwoFiveTwoTimer = ({ reps, setReps, movement, setMovement, isRx }) => {
+const TwoFiveTwoTimer = ({ reps, setReps, category, currentWod }) => {
   const [isWorkoutOver, setIsWorkoutOver] = useState(false)
   const [tieBreaker, setTieBreaker] = useState(0)
+
+
+  console.log( category, currentWod)
+
   // TIMER START
   const [seconds, setSeconds] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
@@ -89,24 +93,26 @@ const TwoFiveTwoTimer = ({ reps, setReps, movement, setMovement, isRx }) => {
 
   // Function to generate the movement text with completed reps
   const getMovementText = () => {
-    if (reps <= 21 && isRx) return `${repsInSet} / 21 pull-ups`;
-    if (reps <= 21 && !isRx) return `${repsInSet} / 21 jumping pull-ups`;
-    if (reps > 21 && reps <= 63 && isRx) return `${repsInSet} / 42 double-unders`;
-    if (reps > 21 && reps <= 63 && !isRx) return `${repsInSet} / 42 single-unders`;
-    if (reps > 63 && reps <= 84 && isRx) return `${repsInSet} / 21 thrusters (95/65)`;
-    if (reps > 63 && reps <= 84 && !isRx) return `${repsInSet} / 21 thrusters (65/45)`;
-    if (reps > 84 && reps <= 102 && isRx) return `${repsInSet} / 18 chest-to-bar pull-ups`;
-    if (reps > 84 && reps <= 102 && !isRx) return `${repsInSet} / 18 pull-ups`;
-    if (reps > 102 && reps <= 138 && isRx) return `${repsInSet} / 36 double-unders`;
-    if (reps > 102 && reps <= 138 && !isRx) return `${repsInSet} / 36 single-unders`;
-    if (reps > 138 && reps <= 156 && isRx) return `${repsInSet} / 18 thrusters (115/75)`;
-    if (reps > 138 && reps <= 156 && !isRx) return `${repsInSet} / 18 thrusters (85/55)`;
-    if (reps > 156 && reps <= 171 && isRx) return `${repsInSet} / 15 bar muscle-ups`;
-    if (reps > 156 && reps <= 171 && !isRx) return `${repsInSet} / 15 C2B pullups`;
-    if (reps > 171 && reps <= 201 && isRx) return `${repsInSet} / 30 double-unders`;
-    if (reps > 171 && reps <= 201 && !isRx) return `${repsInSet} / 30 single-unders`;
-    if (reps > 201 && reps <= 216 && isRx) return `${repsInSet} / 15 thrusters (135/85)`;
-    if (reps > 201 && reps <= 216 && !isRx) return `${repsInSet} / 15 thrusters (105/65)`;
+    if (reps <= 21) return `${repsInSet} / ${currentWod.exercises[0].reps} ${currentWod.exercises[0].name}`;
+    // if (reps <= 21 && category=== 'rx') return `${repsInSet} / 21 pull-ups`;
+    // if (reps <= 21 && category === 'scaled') return `${repsInSet} / 21 jumping pull-ups`;
+    // if (reps <= 21 && category === 'foundations') return `${repsInSet} / 21 bent-over-rows`;
+    if (reps > 21 && reps <= 63) return `${repsInSet} / ${currentWod.exercises[1].reps} ${currentWod.exercises[1].name}`;
+    // if (reps > 21 && reps <= 63 && !isRx) return `${repsInSet} / 42 single-unders`;
+    if (reps > 63 && reps <= 84) return `${repsInSet} / ${currentWod.exercises[2].reps} ${currentWod.exercises[2].name}`;
+    // if (reps > 63 && reps <= 84 && !isRx) return `${repsInSet} / 21 thrusters (65/45)`;
+    if (reps > 84 && reps <= 102) return `${repsInSet} / ${currentWod.exercises[3].reps} ${currentWod.exercises[3].name}`;
+    // if (reps > 84 && reps <= 102 && !isRx) return `${repsInSet} / 18 pull-ups`;
+    if (reps > 102 && reps <= 138) return `${repsInSet} / ${currentWod.exercises[4].reps} ${currentWod.exercises[4].name}`;
+    // if (reps > 102 && reps <= 138 && !isRx) return `${repsInSet} / 36 single-unders`;
+    if (reps > 138 && reps <= 156) return `${repsInSet}  / ${currentWod.exercises[5].reps} ${currentWod.exercises[5].name}`;
+    // if (reps > 138 && reps <= 156 && !isRx) return `${repsInSet} / 18 thrusters (85/55)`;
+    if (reps > 156 && reps <= 171) return `${repsInSet}  / ${currentWod.exercises[6].reps} ${currentWod.exercises[6].name}`;
+    // if (reps > 156 && reps <= 171 && !isRx) return `${repsInSet} / 15 C2B pullups`;
+    if (reps > 171 && reps <= 201) return `${repsInSet}  / ${currentWod.exercises[7].reps} ${currentWod.exercises[7].name}`;
+    // if (reps > 171 && reps <= 201 && !isRx) return `${repsInSet} / 30 single-unders`;
+    if (reps > 201 && reps <= 216) return `${repsInSet}  / ${currentWod.exercises[8].reps} ${currentWod.exercises[8].name}`;
+    // if (reps > 201 && reps <= 216 && !isRx) return `${repsInSet} / 15 thrusters (105/65)`;
     return "";
   };
 
@@ -165,10 +171,10 @@ const TwoFiveTwoTimer = ({ reps, setReps, movement, setMovement, isRx }) => {
       <div>
         
         <div className='mt-8 flex justify-center gap-4 w-full'>
-          <button onClick={() => {
+          <button onMouseDown={() => {
               setReps(reps - 1)
             }} className={`border-[1px] rounded-md w-1/2 py-2 cursor-pointer font-bold`}>-1</button>
-          <button onClick={() => {
+          <button onMouseDown={() => {
               setReps(reps + 1)
             }} className={`border-[1px] rounded-md w-1/2 py-2 cursor-pointer font-bold`}>+1</button>
         </div>
