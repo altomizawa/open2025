@@ -8,7 +8,7 @@ import TwoFiveTwoDescription from '@/app/components/TwoFiveTwoDescription'
 import TwoFiveTwoTimer from '../components/TwoFiveTwoTimer'
 
 const TwentyFiveTwo = () => {
-  const [reps, setReps] = useState(80)
+  const [reps, setReps] = useState(200)
   const [movement, setMovement] = useState('')
   const [isRx, setIsRx] = useState(true)
   const [isCounterScreen, setIsCounterScreen] = useState(false)
@@ -16,7 +16,7 @@ const TwentyFiveTwo = () => {
   return (
     <main className='p-8 flex flex-col h-screen text-white'>
       <Link href="/" className='text-white'>&lt; Back</Link>
-      {isCounterScreen && <Image alt='kor logo' src={korLogo} width={200} height={200} className='mx-auto w-16 mt-4 mb-4' />}
+      {isCounterScreen && <Image alt='kor logo' src={korLogo} width={200} height={200} className='mx-auto w-12' />}
       {!isCounterScreen && <TwoFiveTwoDescription isRx={isRx} setIsRx={setIsRx} setIsCounterScreen={setIsCounterScreen}/>}
       {isCounterScreen && <TwoFiveTwoTimer reps={reps} setReps={setReps} movement={movement} setMovement={setMovement} isRx={isRx}/>}
     </main>
