@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
+import Toast from './Toast'
 
 const TwoFiveTwoTimer = ({ reps, setReps, category, currentWod }) => {
   const [isWorkoutOver, setIsWorkoutOver] = useState(false)
   const [tieBreaker, setTieBreaker] = useState(0)
+  const [toast, setToastt] = useState(false)
 
 
   console.log( category, currentWod)
@@ -64,6 +66,10 @@ const TwoFiveTwoTimer = ({ reps, setReps, category, currentWod }) => {
   // Function to add Tie breaker
   const addTieBreaker = () => {
     setTieBreaker(seconds)
+    setToastt(true)
+    setTimeout(() => {
+      setToastt(false)
+    },2000)
   }
 
   //Function to track reps in set
@@ -118,6 +124,7 @@ const TwoFiveTwoTimer = ({ reps, setReps, category, currentWod }) => {
 
   return (
     <div className='flex flex-col justify-between h-full'>
+      {toast && <Toast message='Tie Breaker added' />}
       {isWorkoutOver && (
         <div className='fixed h-screen w-screen top-0 left-0 bg-black bg-opacity-50 flex flex-col items-center justify-center'>
           <h3 className='text-4xl font-bold text-center'>DONE</h3>
@@ -172,9 +179,11 @@ const TwoFiveTwoTimer = ({ reps, setReps, category, currentWod }) => {
         
         <div className='mt-8 flex justify-center gap-4 w-full'>
           <button onMouseDown={() => {
+              navigator.vibrate(200);
               setReps(reps - 1)
             }} className={`border-[1px] rounded-md w-1/2 py-2 cursor-pointer font-bold`}>-1</button>
           <button onMouseDown={() => {
+              navigator.vibrate(200);
               setReps(reps + 1)
             }} className={`border-[1px] rounded-md w-1/2 py-2 cursor-pointer font-bold`}>+1</button>
         </div>
