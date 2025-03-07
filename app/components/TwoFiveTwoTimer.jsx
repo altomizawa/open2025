@@ -50,26 +50,12 @@ const TwoFiveTwoTimer = ({ reps, setReps, movement, setMovement, isRx }) => {
       }, 1000);
     }
     if (seconds >= durationInSeconds) {
+      setIsWorkoutOver(true);
       handlePause()
     }
 
     return () => clearInterval(intervalId);
   }, [isRunning, seconds, durationInSeconds]);
-
-  // // Reps useEffect - Only for rep-based actions
-  // useEffect(() => {
-  //   if (reps >= 84) {
-  //       if (reps === 84) setTieBreaker(seconds)
-  //   }
-  //   if (reps >= 156) {
-  //       if (reps === 156) setTieBreaker(seconds)
-  //   }
-  //   if (reps >= 216) {
-  //     setIsWorkoutOver(true);
-  //     handlePause();
-  //   }
-    
-  // }, [reps, seconds])
 
   // Function to add Tie breaker
   const addTieBreaker = () => {
