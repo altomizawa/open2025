@@ -129,7 +129,7 @@ const TwoFiveThreeTimer = ({ reps, setReps, category, currentWod }) => {
           <p>REPS:{reps}</p>
           <p>TIME: {formatTime(seconds)}</p>
           <p>TIE BREAKER: {formatTime(tieBreaker)}</p>
-          <p>MOSTRE O RESULTADO PARA O RESPONSÁVEL E DEPOIS CLIQUE NO BOTÃO ABAIXO</p>
+          <p className='px-4 text-center'>MOSTRE O RESULTADO PARA O RESPONSÁVEL E DEPOIS CLIQUE NO BOTÃO ABAIXO</p>
           <button onClick={resetTimer} className='border-[1px] rounded-md w-24 py-2 cursor-pointer font-bold mt-8'>RESET</button>
         </div>
       )}
