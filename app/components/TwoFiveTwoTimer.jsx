@@ -180,12 +180,12 @@ const TwoFiveTwoTimer = ({ reps, setReps, category, currentWod }) => {
         
         <div className='mt-8 flex justify-center gap-4 w-full'>
           <button onMouseDown={() => {
-              navigator.vibrate(50);
-              setReps(reps - 1)
+            setReps(reps - 1)
+            navigator.vibrate(50);
             }} className={`border-[1px] rounded-md w-1/2 py-2 cursor-pointer font-bold`}>-1</button>
           <button onMouseDown={() => {
-              navigator.vibrate(50);
-              setReps(reps + 1)
+            setReps(reps + 1)
+            navigator.vibrate(50);
             }} className={`border-[1px] rounded-md w-1/2 py-2 cursor-pointer font-bold`}>+1</button>
         </div>
       </div>
