@@ -9,7 +9,7 @@ const TwoFiveThreeTimer = ({ reps, setReps, category, currentWod }) => {
   // TIMER START
   const [seconds, setSeconds] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
-  const durationInSeconds = 720; // 12 minutes
+  const durationInSeconds = 1200; // 20 minutes
 
   const handleStart = () => {
     setIsRunning(true);
