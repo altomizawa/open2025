@@ -79,7 +79,7 @@ const scaled = {
       reps: 5
     },
     {
-      name: 'Snatches (65/645)',
+      name: 'Snatches (65/45)',
       reps: 25
     },
     {
